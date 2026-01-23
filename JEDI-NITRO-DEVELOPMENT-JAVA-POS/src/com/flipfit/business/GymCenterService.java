@@ -11,73 +11,73 @@ public class GymCenterService implements GymCenterServiceInterface {
     
     @Override
     public boolean addGymCenter(GymCenter center) {
-        // TODO: Implement
+        System.out.println("GymCenterService.addGymCenter called");
         return false;
     }
     
     @Override
     public GymCenter getGymCenterById(int centerId) {
-        // TODO: Implement
+        System.out.println("GymCenterService.getGymCenterById called");
         return null;
     }
     
     @Override
     public List<GymCenter> getAllGymCenters() {
-        // TODO: Implement
+        System.out.println("GymCenterService.getAllGymCenters called");
         return null;
     }
     
     @Override
     public List<GymCenter> getApprovedGymCenters() {
-        // TODO: Implement
+        System.out.println("GymCenterService.getApprovedGymCenters called");
         return null;
     }
     
     @Override
     public List<GymCenter> getPendingGymCenters() {
-        // TODO: Implement
+        System.out.println("GymCenterService.getPendingGymCenters called");
         return null;
     }
     
     @Override
     public List<GymCenter> getGymCentersByOwner(int ownerId) {
-        // TODO: Implement
+        System.out.println("GymCenterService.getGymCentersByOwner called");
         return null;
     }
     
     @Override
     public boolean updateGymCenter(int centerId, String name, String location) {
-        // TODO: Implement
+        System.out.println("GymCenterService.updateGymCenter called");
         return false;
     }
     
     @Override
     public boolean approveGymCenter(int centerId) {
-        // TODO: Implement
+        System.out.println("GymCenterService.approveGymCenter called");
         return false;
     }
     
     @Override
     public boolean rejectGymCenter(int centerId) {
-        // TODO: Implement
+        System.out.println("GymCenterService.rejectGymCenter called");
         return false;
     }
     
     @Override
     public List<Slot> viewAvailableSlots(int centerId) {
-        // TODO: Implement
+        System.out.println("GymCenterService.viewAvailableSlots called");
         return null;
     }
     
     @Override
     public GymCenter getCenterDetails(int centerId) {
-        // TODO: Implement
+        System.out.println("GymCenterService.getCenterDetails called");
         return null;
     }
     
     @Override
     public boolean requestForApproval(int centerId) {
-        // TODO: Implement
+        System.out.println("GymCenterService.requestForApproval called");
         return false;
     }
 }

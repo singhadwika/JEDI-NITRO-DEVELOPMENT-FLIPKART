@@ -11,67 +11,67 @@ public class GymOwnerService implements GymOwnerServiceInterface {
     
     @Override
     public boolean registerGymOwner(GymOwner gymOwner) {
-        // TODO: Implement
+        System.out.println("GymOwnerService.registerGymOwner called");
         return false;
     }
     
     @Override
     public boolean addGymCenter(int ownerId, GymCenter center) {
-        // TODO: Implement
+        System.out.println("GymOwnerService.addGymCenter called");
         return false;
     }
     
     @Override
     public boolean updateCenterDetails(int centerId, String name, String location) {
-        // TODO: Implement
+        System.out.println("GymOwnerService.updateCenterDetails called");
         return false;
     }
     
     @Override
     public boolean addSlot(int centerId, LocalTime startTime, LocalTime endTime, int totalSeats) {
-        // TODO: Implement
+        System.out.println("GymOwnerService.addSlot called");
         return false;
     }
     
     @Override
     public boolean removeSlot(int slotId) {
-        // TODO: Implement
+        System.out.println("GymOwnerService.removeSlot called");
         return false;
     }
     
     @Override
     public List<Slot> manageSlots(int centerId) {
-        // TODO: Implement
+        System.out.println("GymOwnerService.manageSlots called");
         return null;
     }
     
     @Override
     public List<Booking> viewBookings(int ownerId) {
-        // TODO: Implement
+        System.out.println("GymOwnerService.viewBookings called");
         return null;
     }
     
     @Override
     public List<Booking> viewBookingsByCenter(int centerId) {
-        // TODO: Implement
+        System.out.println("GymOwnerService.viewBookingsByCenter called");
         return null;
     }
     
     @Override
     public List<GymCenter> getGymCentersByOwner(int ownerId) {
-        // TODO: Implement
+        System.out.println("GymOwnerService.getGymCentersByOwner called");
         return null;
     }
     
     @Override
     public boolean requestApproval(int centerId) {
-        // TODO: Implement
+        System.out.println("GymOwnerService.requestApproval called");
         return false;
     }
     
     @Override
     public GymOwner getGymOwnerById(int ownerId) {
-        // TODO: Implement
+        System.out.println("GymOwnerService.getGymOwnerById called");
         return null;
     }
 }
