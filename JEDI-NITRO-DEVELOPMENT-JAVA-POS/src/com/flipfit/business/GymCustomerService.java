@@ -10,61 +10,61 @@ public class GymCustomerService implements GymCustomerServiceInterface {
     
     @Override
     public boolean registerCustomer(GymCustomer customer) {
-        // TODO: Implement
+        System.out.println("GymCustomerService.registerCustomer called");
         return false;
     }
     
     @Override
     public List<Slot> viewSlots() {
-        // TODO: Implement
+        System.out.println("GymCustomerService.viewSlots called");
         return null;
     }
     
     @Override
     public List<Slot> viewSlotsByCenter(int centerId) {
-        // TODO: Implement
+        System.out.println("GymCustomerService.viewSlotsByCenter called");
         return null;
     }
     
     @Override
     public List<GymCenter> viewCenters() {
-        // TODO: Implement
+        System.out.println("GymCustomerService.viewCenters called");
         return null;
     }
     
     @Override
     public List<GymCenter> viewApprovedCenters() {
-        // TODO: Implement
+        System.out.println("GymCustomerService.viewApprovedCenters called");
         return null;
     }
     
     @Override
     public Booking bookSlot(int customerId, int slotId, int centerId) {
-        // TODO: Implement
+        System.out.println("GymCustomerService.bookSlot called");
         return null;
     }
     
     @Override
     public boolean cancelSlot(int bookingId) {
-        // TODO: Implement
+        System.out.println("GymCustomerService.cancelSlot called");
         return false;
     }
     
     @Override
     public List<Booking> viewWorkoutPlan(int customerId) {
-        // TODO: Implement
+        System.out.println("GymCustomerService.viewWorkoutPlan called");
         return null;
     }
     
     @Override
     public List<Booking> getCustomerBookings(int customerId) {
-        // TODO: Implement
+        System.out.println("GymCustomerService.getCustomerBookings called");
         return null;
     }
     
     @Override
     public GymCustomer getCustomerById(int customerId) {
-        // TODO: Implement
+        System.out.println("GymCustomerService.getCustomerById called");
         return null;
     }
 }

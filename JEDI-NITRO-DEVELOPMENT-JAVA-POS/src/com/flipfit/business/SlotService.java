@@ -11,55 +11,55 @@ public class SlotService implements SlotServiceInterface {
     
     @Override
     public Slot createSlot(int centerId, LocalTime startTime, LocalTime endTime, int totalSeats) {
-        // TODO: Implement
+        System.out.println("SlotService.createSlot called");
         return null;
     }
     
     @Override
     public Slot getSlotById(int slotId) {
-        // TODO: Implement
+        System.out.println("SlotService.getSlotById called");
         return null;
     }
     
     @Override
     public List<Slot> getSlotsByCenter(int centerId) {
-        // TODO: Implement
+        System.out.println("SlotService.getSlotsByCenter called");
         return null;
     }
     
     @Override
     public List<Slot> getAvailableSlotsByCenter(int centerId) {
-        // TODO: Implement
+        System.out.println("SlotService.getAvailableSlotsByCenter called");
         return null;
     }
     
     @Override
     public boolean isSlotAvailable(int slotId) {
-        // TODO: Implement
+        System.out.println("SlotService.isSlotAvailable called");
         return false;
     }
     
     @Override
     public boolean lockSlot(int slotId) {
-        // TODO: Implement
+        System.out.println("SlotService.lockSlot called");
         return false;
     }
     
     @Override
     public boolean unlockSlot(int slotId) {
-        // TODO: Implement
+        System.out.println("SlotService.unlockSlot called");
         return false;
     }
     
     @Override
     public boolean updateSlot(int slotId, LocalTime startTime, LocalTime endTime, int totalSeats) {
-        // TODO: Implement
+        System.out.println("SlotService.updateSlot called");
         return false;
     }
     
     @Override
     public boolean deleteSlot(int slotId) {
-        // TODO: Implement
+        System.out.println("SlotService.deleteSlot called");
         return false;
     }
 }

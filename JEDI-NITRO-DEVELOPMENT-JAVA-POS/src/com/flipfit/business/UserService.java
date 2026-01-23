@@ -10,42 +10,42 @@ public class UserService implements UserServiceInterface {
     
     @Override
     public User login(String email, String password) {
-        // TODO: Implement
+        System.out.println("UserService.login called");
         return null;
     }
     
     @Override
     public boolean logout(int userId) {
-        // TODO: Implement
+        System.out.println("UserService.logout called");
         return false;
     }
     
     @Override
     public boolean register(User user) {
-        // TODO: Implement
+        System.out.println("UserService.register called");
         return false;
     }
     
     @Override
     public boolean updateProfile(int userId, String name, String email, String password) {
-        // TODO: Implement
+        System.out.println("UserService.updateProfile called");
         return false;
     }
     
     @Override
     public User getUserDetails(int userId) {
-        // TODO: Implement
+        System.out.println("UserService.getUserDetails called");
         return null;
     }
     
     @Override
     public User getUserByEmail(String email) {
-        // TODO: Implement
+        System.out.println("UserService.getUserByEmail called");
         return null;
     }
     
     public List<User> getAllUsers() {
-        // TODO: Implement
+        System.out.println("UserService.getAllUsers called");
         return null;
     }
 }

@@ -10,60 +10,60 @@ public class AdminService implements AdminServiceInterface {
     
     @Override
     public String getMonthlyDetails() {
-        // TODO: Implement
+        System.out.println("AdminService.getMonthlyDetails called");
         return null;
     }
     
     @Override
     public List<GymCenter> viewPendingGymRequest() {
-        // TODO: Implement
+        System.out.println("AdminService.viewPendingGymRequest called");
         return null;
     }
     
     @Override
     public boolean approveRequest(int centerId) {
-        // TODO: Implement
+        System.out.println("AdminService.approveRequest called");
         return false;
     }
     
     @Override
     public boolean declineRequest(int centerId, String reason) {
-        // TODO: Implement
+        System.out.println("AdminService.declineRequest called");
         return false;
     }
     
     @Override
     public List<User> viewAllUsers() {
-        // TODO: Implement
+        System.out.println("AdminService.viewAllUsers called");
         return null;
     }
     
     @Override
     public List<GymCenter> viewAllGymCenters() {
-        // TODO: Implement
+        System.out.println("AdminService.viewAllGymCenters called");
         return null;
     }
     
     @Override
     public List<GymOwner> viewAllGymOwners() {
-        // TODO: Implement
+        System.out.println("AdminService.viewAllGymOwners called");
         return null;
     }
     
     @Override
     public boolean verifyGymOwner(int ownerId) {
-        // TODO: Implement
+        System.out.println("AdminService.verifyGymOwner called");
         return false;
     }
     
     @Override
     public Admin getAdminById(int adminId) {
-        // TODO: Implement
+        System.out.println("AdminService.getAdminById called");
         return null;
     }
     
     public boolean registerAdmin(Admin admin) {
-        // TODO: Implement
+        System.out.println("AdminService.registerAdmin called");
         return false;
     }
 }

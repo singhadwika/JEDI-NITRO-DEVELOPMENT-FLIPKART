@@ -11,49 +11,49 @@ public class BookingService implements BookingServiceInterface {
     
     @Override
     public Booking createBooking(int userId, int slotId, int centerId, LocalDate bookingDate) {
-        // TODO: Implement
+        System.out.println("BookingService.createBooking called");
         return null;
     }
     
     @Override
     public boolean confirmBooking(int bookingId) {
-        // TODO: Implement
+        System.out.println("BookingService.confirmBooking called");
         return false;
     }
     
     @Override
     public boolean cancelBooking(int bookingId) {
-        // TODO: Implement
+        System.out.println("BookingService.cancelBooking called");
         return false;
     }
     
     @Override
     public Booking getBookingById(int bookingId) {
-        // TODO: Implement
+        System.out.println("BookingService.getBookingById called");
         return null;
     }
     
     @Override
     public List<Booking> getBookingsByUser(int userId) {
-        // TODO: Implement
+        System.out.println("BookingService.getBookingsByUser called");
         return null;
     }
     
     @Override
     public List<Booking> getBookingsBySlot(int slotId) {
-        // TODO: Implement
+        System.out.println("BookingService.getBookingsBySlot called");
         return null;
     }
     
     @Override
     public List<Booking> getBookingsByCenter(int centerId) {
-        // TODO: Implement
+        System.out.println("BookingService.getBookingsByCenter called");
         return null;
     }
     
     @Override
     public List<Booking> getBookingsByDate(LocalDate date) {
-        // TODO: Implement
+        System.out.println("BookingService.getBookingsByDate called");
         return null;
     }
 }
