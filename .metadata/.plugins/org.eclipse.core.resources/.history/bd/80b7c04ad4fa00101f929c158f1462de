@@ -1,0 +1,108 @@
+package com.flipfit.business;
+
+import com.flipfit.bean.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class AdminServiceImpl implements AdminService {
+
+    private static List<Admin> adminList = new ArrayList<>();
+    private static List<GymCenter> gymCenters = new ArrayList<>();
+    private static List<GymOwner> gymOwners = new ArrayList<>();
+    private static List<User> users = new ArrayList<>();
+
+    static {
+        // Since we cannot add a constructor to User.java, 
+        // we create the object and use setters.
+        User user1 = new User();
+        user1.setId(1);
+        user1.setName("Poojitha");
+        user1.setEmail("poojitha@flipkart.com");
+        users.add(user1);
+
+        User user2 = new User();
+        user2.setId(2);
+        user2.setName("Saumyajeet");
+        user2.setEmail("saumya@flipkart.com");
+        users.add(user2);
+
+        // Using the 5-argument constructor you defined in GymCenter.java
+        gymCenters.add(new GymCenter(101, "FlipFit HSR", "Bangalore", false, 501));
+    }
+
+    // --- DEMO: INSERT OPERATION ---
+    @Override
+    public boolean registerAdmin(Admin admin) {
+        // This will work if you pass a fully formed Admin object from the Menu
+        System.out.println("Inserting Admin: " + admin.getName());
+        return adminList.add(admin);
+    }
+
+    @Override
+    public List<User> viewAllUsers() {
+        return users;
+    }
+
+    @Override
+    public List<GymCenter> viewAllGymCenters() {
+        return gymCenters;
+    }
+
+    @Override
+    public List<GymCenter> viewPendingGymRequest() {
+        List<GymCenter> pending = new ArrayList<>();
+        for (GymCenter c : gymCenters) {
+            if (!c.isApproved()) {
+                pending.add(c);
+            }
+        }
+        return pending;
+    }
+
+    @Override
+    public Admin getAdminById(int adminId) {
+        // Searching the list avoids the "Admin() constructor undefined" error
+        for (Admin a : adminList) {
+            if (a.getId() == adminId) return a;
+        }
+        return null; 
+    }
+
+    @Override
+    public boolean approveRequest(int centerId) {
+        for (GymCenter c : gymCenters) {
+            if (c.getCenterId() == centerId) {
+                c.setApproved(true);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean declineRequest(int centerId, String reason) {
+        // Uses the getter from GymCenter.java
+        return gymCenters.removeIf(c -> c.getCenterId() == centerId);
+    }
+
+    @Override
+    public String getMonthlyDetails() {
+        return "Users: " + users.size() + ", Centers: " + gymCenters.size();
+    }
+
+    @Override
+    public List<GymOwner> viewAllGymOwners() {
+        return gymOwners;
+    }
+
+    @Override
+    public boolean verifyGymOwner(int ownerId) {
+        for (GymOwner o : gymOwners) {
+            if (o.getId() == ownerId) {
+                o.setVerified(true);
+                return true;
+            }
+        }
+        return false;
+    }
+}

@@ -3,68 +3,25 @@ package com.flipfit.business;
 import com.flipfit.bean.*;
 import java.util.List;
 
-/**
- * Implementation of GymCustomerServiceInterface.
- */
-public class GymCustomerService implements GymCustomerServiceInterface {
+public interface GymCustomerService {
     
-    @Override
-    public boolean registerCustomer(GymCustomer customer) {
-        // TODO: Implement
-        return false;
-    }
+    public boolean registerCustomer(GymCustomer customer);
     
-    @Override
-    public List<Slot> viewSlots() {
-        // TODO: Implement
-        return null;
-    }
+    public List<Slot> viewSlots();
     
-    @Override
-    public List<Slot> viewSlotsByCenter(int centerId) {
-        // TODO: Implement
-        return null;
-    }
+    public List<Slot> viewSlotsByCenter(int centerId);
     
-    @Override
-    public List<GymCenter> viewCenters() {
-        // TODO: Implement
-        return null;
-    }
+    public List<GymCenter> viewCenters();
     
-    @Override
-    public List<GymCenter> viewApprovedCenters() {
-        // TODO: Implement
-        return null;
-    }
+    public List<GymCenter> viewApprovedCenters();
     
-    @Override
-    public Booking bookSlot(int customerId, int slotId, int centerId) {
-        // TODO: Implement
-        return null;
-    }
+    public Booking bookSlot(int customerId, int slotId, int centerId);
     
-    @Override
-    public boolean cancelSlot(int bookingId) {
-        // TODO: Implement
-        return false;
-    }
+    public boolean cancelSlot(int bookingId);
     
-    @Override
-    public List<Booking> viewWorkoutPlan(int customerId) {
-        // TODO: Implement
-        return null;
-    }
+    public List<Booking> viewWorkoutPlan(int customerId);
     
-    @Override
-    public List<Booking> getCustomerBookings(int customerId) {
-        // TODO: Implement
-        return null;
-    }
+    public List<Booking> getCustomerBookings(int customerId);
     
-    @Override
-    public GymCustomer getCustomerById(int customerId) {
-        // TODO: Implement
-        return null;
-    }
+    public GymCustomer getCustomerById(int customerId);
 }

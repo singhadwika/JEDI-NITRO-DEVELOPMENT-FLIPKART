@@ -4,74 +4,27 @@ import com.flipfit.bean.*;
 import java.time.LocalTime;
 import java.util.List;
 
-/**
- * Implementation of GymOwnerServiceInterface.
- */
-public class GymOwnerService implements GymOwnerServiceInterface {
+public interface GymOwnerService {
     
-    @Override
-    public boolean registerGymOwner(GymOwner gymOwner) {
-        // TODO: Implement
-        return false;
-    }
+    public boolean registerGymOwner(GymOwner gymOwner);
     
-    @Override
-    public boolean addGymCenter(int ownerId, GymCenter center) {
-        // TODO: Implement
-        return false;
-    }
+    public boolean addGymCenter(int ownerId, GymCenter center);
     
-    @Override
-    public boolean updateCenterDetails(int centerId, String name, String location) {
-        // TODO: Implement
-        return false;
-    }
+    public boolean updateCenterDetails(int centerId, String name, String location);
     
-    @Override
-    public boolean addSlot(int centerId, LocalTime startTime, LocalTime endTime, int totalSeats) {
-        // TODO: Implement
-        return false;
-    }
+    public boolean addSlot(int centerId, LocalTime startTime, LocalTime endTime, int totalSeats);
     
-    @Override
-    public boolean removeSlot(int slotId) {
-        // TODO: Implement
-        return false;
-    }
+    public boolean removeSlot(int slotId);
     
-    @Override
-    public List<Slot> manageSlots(int centerId) {
-        // TODO: Implement
-        return null;
-    }
+    public List<Slot> manageSlots(int centerId);
     
-    @Override
-    public List<Booking> viewBookings(int ownerId) {
-        // TODO: Implement
-        return null;
-    }
+    public List<Booking> viewBookings(int ownerId);
     
-    @Override
-    public List<Booking> viewBookingsByCenter(int centerId) {
-        // TODO: Implement
-        return null;
-    }
+    public List<Booking> viewBookingsByCenter(int centerId);
     
-    @Override
-    public List<GymCenter> getGymCentersByOwner(int ownerId) {
-        // TODO: Implement
-        return null;
-    }
+    public List<GymCenter> getGymCentersByOwner(int ownerId);
     
-    @Override
-    public boolean requestApproval(int centerId) {
-        // TODO: Implement
-        return false;
-    }
+    public boolean requestApproval(int centerId);
     
-    @Override
-    public GymOwner getGymOwnerById(int ownerId) {
-        // TODO: Implement
-        return null;
-    }
+    public GymOwner getGymOwnerById(int ownerId);
 }

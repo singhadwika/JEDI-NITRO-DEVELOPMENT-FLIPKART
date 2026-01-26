@@ -1,0 +1,81 @@
+package com.flipfit.business;
+
+import com.flipfit.bean.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class AdminServiceImpl implements AdminService {
+
+    // Hardcoded static lists to act as our "Database"
+    private static List<Admin> adminList = new ArrayList<>();
+    private static List<GymCenter> gymCenters = new ArrayList<>();
+    private static List<GymOwner> gymOwners = new ArrayList<>();
+    private static List<User> users = new ArrayList<>();
+
+    // Static block to initialize the demo with hardcoded details
+    static {
+        users.add(new User(1, "Poojitha", "poojitha@flipkart.com"));
+        users.add(new User(2, "Saumyajeet", "saumya@flipkart.com"));
+
+        GymCenter c1 = new GymCenter();
+        c1.setCenterId(101);
+        c1.setCenterName("FlipFit HSR");
+        c1.setApproved(false);
+        gymCenters.add(c1);
+    }
+
+    // --- DEMO: INSERT OPERATION ---
+    @Override
+    public boolean registerAdmin(Admin admin) {
+        System.out.println("Demo: Adding Admin " + admin.getName() + " to the list...");
+        return adminList.add(admin);
+    }
+
+    // --- READ OPERATIONS ---
+    @Override
+    public List<User> viewAllUsers() {
+        return users;
+    }
+
+    @Override
+    public List<GymCenter> viewAllGymCenters() {
+        return gymCenters;
+    }
+
+    @Override
+    public List<GymCenter> viewPendingGymRequest() {
+        List<GymCenter> pending = new ArrayList<>();
+        for (GymCenter c : gymCenters) {
+            if (!c.isApproved()) pending.add(c);
+        }
+        return pending;
+    }
+
+    // --- UPDATE OPERATIONS ---
+    @Override
+    public boolean approveRequest(int centerId) {
+        for (GymCenter c : gymCenters) {
+            if (c.getCenterId() == centerId) {
+                c.setApproved(true);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // --- OTHER METHODS ---
+    @Override
+    public String getMonthlyDetails() {
+        return "Report: " + users.size() + " Users Registered.";
+    }
+
+    @Override
+    public boolean declineRequest(int centerId, String reason) {
+        gymCenters.removeIf(c -> c.getCenterId() == centerId);
+        return true;
+    }
+
+    @Override public List<GymOwner> viewAllGymOwners() { return gymOwners; }
+    @Override public boolean verifyGymOwner(int ownerId) { return true; }
+    @Override public Admin getAdminById(int adminId) { return new Admin(); }
+}

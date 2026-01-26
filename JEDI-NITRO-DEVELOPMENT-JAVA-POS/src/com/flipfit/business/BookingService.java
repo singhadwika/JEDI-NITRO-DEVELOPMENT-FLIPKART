@@ -4,56 +4,21 @@ import com.flipfit.bean.Booking;
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * Implementation of BookingServiceInterface.
- */
-public class BookingService implements BookingServiceInterface {
+public interface BookingService {
     
-    @Override
-    public Booking createBooking(int userId, int slotId, int centerId, LocalDate bookingDate) {
-        // TODO: Implement
-        return null;
-    }
+    Booking createBooking(int userId, int slotId, int centerId, LocalDate bookingDate);
     
-    @Override
-    public boolean confirmBooking(int bookingId) {
-        // TODO: Implement
-        return false;
-    }
+    public boolean confirmBooking(int bookingId);
     
-    @Override
-    public boolean cancelBooking(int bookingId) {
-        // TODO: Implement
-        return false;
-    }
+    public boolean cancelBooking(int bookingId);
     
-    @Override
-    public Booking getBookingById(int bookingId) {
-        // TODO: Implement
-        return null;
-    }
+    public Booking getBookingById(int bookingId);
     
-    @Override
-    public List<Booking> getBookingsByUser(int userId) {
-        // TODO: Implement
-        return null;
-    }
+    public List<Booking> getBookingsByUser(int userId);
     
-    @Override
-    public List<Booking> getBookingsBySlot(int slotId) {
-        // TODO: Implement
-        return null;
-    }
+    public List<Booking> getBookingsBySlot(int slotId);
     
-    @Override
-    public List<Booking> getBookingsByCenter(int centerId) {
-        // TODO: Implement
-        return null;
-    }
+    public List<Booking> getBookingsByCenter(int centerId);
     
-    @Override
-    public List<Booking> getBookingsByDate(LocalDate date) {
-        // TODO: Implement
-        return null;
-    }
+    public List<Booking> getBookingsByDate(LocalDate date);
 }

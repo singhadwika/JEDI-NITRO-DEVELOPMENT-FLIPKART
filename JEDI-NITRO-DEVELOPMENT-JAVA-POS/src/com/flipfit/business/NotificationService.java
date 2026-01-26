@@ -3,50 +3,17 @@ package com.flipfit.business;
 import com.flipfit.bean.Notification;
 import java.util.List;
 
-/**
- * Implementation of NotificationServiceInterface.
- */
-public class NotificationService implements NotificationServiceInterface {
+public interface NotificationService {
     
-    @Override
-    public boolean sendNotification(int userId, String type, String message) {
-        // TODO: Implement
-        return false;
-    }
+    public boolean sendNotification(int userId, String type, String message);
     
-    @Override
-    public Notification getNotificationById(int notificationId) {
-        // TODO: Implement
-        return null;
-    }
+    public Notification getNotificationById(int notificationId);
     
-    @Override
-    public List<Notification> getNotificationsByUser(int userId) {
-        // TODO: Implement
-        return null;
-    }
-    
-    @Override
-    public List<Notification> getUnreadNotifications(int userId) {
-        // TODO: Implement
-        return null;
-    }
-    
-    @Override
-    public boolean markAsRead(int notificationId) {
-        // TODO: Implement
-        return false;
-    }
-    
-    @Override
-    public boolean markAllAsRead(int userId) {
-        // TODO: Implement
-        return false;
-    }
-    
-    @Override
-    public boolean deleteNotification(int notificationId) {
-        // TODO: Implement
-        return false;
-    }
+    public List<Notification> getNotificationsByUser(int userId);
+
+    public List<Notification> getUnreadNotifications(int userId);    
+
+    public boolean markAsRead(int notificationId);
+
+    public boolean deleteNotification(int notificationId);
 }
