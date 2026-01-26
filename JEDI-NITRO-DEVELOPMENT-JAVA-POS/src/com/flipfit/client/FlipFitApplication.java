@@ -2,6 +2,7 @@ package com.flipfit.client;
 
 import com.flipfit.business.*;
 import com.flipfit.bean.*;
+import com.flipfit.helper.MockDataLoader;
 
 import java.util.Scanner;
 
@@ -9,6 +10,8 @@ public class FlipFitApplication {
 
     public static void main(String[] args) {
 
+        MockDataLoader.loadMockData();
+        
         Scanner sc = new Scanner(System.in);
         UserService userService = new UserServiceImpl();
 
