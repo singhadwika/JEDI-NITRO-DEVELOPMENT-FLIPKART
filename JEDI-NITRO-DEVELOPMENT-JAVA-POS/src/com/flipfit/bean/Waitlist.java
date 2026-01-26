@@ -1,29 +1,50 @@
 package com.flipfit.bean;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 public class Waitlist {
-    private int waitlistId;
+
+	private int waitlistId;
+	private int userId;
     private int slotId;
-    private int position;
-    private List<Integer> userIds;
+    private LocalDateTime requestTime;
 
-    public Waitlist() {}
+    public Waitlist(int waitlistId, int userId, int slotId) {
+    	this.waitlistId = waitlistId;
+    	this.userId = userId;
+    	this.slotId = slotId;
+    	this.requestTime = LocalDateTime.now();
+    }
 
-    public Waitlist(int waitlistId, int slotId) {}
+	public int getWaitlistId() {
+		return waitlistId;
+	}
 
-    public int getWaitlistId() { return 0; }
-    public void setWaitlistId(int waitlistId) {}
-    public int getSlotId() { return 0; }
-    public void setSlotId(int slotId) {}
-    public int getPosition() { return 0; }
-    public void setPosition(int position) {}
-    public List<Integer> getUserIds() { return null; }
-    public void setUserIds(List<Integer> userIds) {}
+	public void setWaitlistId(int waitlistId) {
+		this.waitlistId = waitlistId;
+	}
 
-    public boolean addUser(int userId) { return false; }
-    public boolean removeUser(int userId) { return false; }
-    public int promoteUser() { return 0; }
-    public int getPositionForUser(int userId) { return 0; }
-    public int getWaitlistSize() { return 0; }
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public int getSlotId() {
+		return slotId;
+	}
+
+	public void setSlotId(int slotId) {
+		this.slotId = slotId;
+	}
+
+	public LocalDateTime getRequestTime() {
+		return requestTime;
+	}
+
+	public void setRequestTime(LocalDateTime requestTime) {
+		this.requestTime = requestTime;
+	}
 }
