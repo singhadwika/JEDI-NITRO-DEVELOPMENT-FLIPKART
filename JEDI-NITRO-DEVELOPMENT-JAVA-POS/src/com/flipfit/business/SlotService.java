@@ -22,5 +22,5 @@ public interface SlotService {
 
     public boolean updateSlot(int slotId, LocalTime startTime, LocalTime endTime, int totalSeats);
 
-    public boolean deleteSlot(int slotId)
+    public boolean deleteSlot(int slotId);
 }

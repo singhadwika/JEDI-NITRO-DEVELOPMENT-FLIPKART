@@ -9,8 +9,7 @@ public class Waitlist {
     private int slotId;
     private LocalDateTime requestTime;
 
-    public Waitlist(int waitlistId, int userId, int slotId) {
-    	this.waitlistId = waitlistId;
+    public Waitlist(int userId, int slotId) {
     	this.userId = userId;
     	this.slotId = slotId;
     	this.requestTime = LocalDateTime.now();
