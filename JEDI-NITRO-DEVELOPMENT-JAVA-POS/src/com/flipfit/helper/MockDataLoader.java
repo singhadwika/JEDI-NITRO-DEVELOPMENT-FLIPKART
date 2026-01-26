@@ -112,7 +112,7 @@ public class MockDataLoader {
                 customer1.getId(),
                 1,
                 center1.getCenterId(),
-                LocalDate.now()
+                java.time.LocalDate.now()
         );
 
         bookingService.confirmBooking(1);
@@ -121,11 +121,11 @@ public class MockDataLoader {
                 customer2.getId(),
                 2,
                 center1.getCenterId(),
-                LocalDate.now()
+                java.time.LocalDate.now()
         );
 
         bookingService.confirmBooking(2);
-
+        
         System.out.println("Mock Data Loaded Successfully!");
     }
 }

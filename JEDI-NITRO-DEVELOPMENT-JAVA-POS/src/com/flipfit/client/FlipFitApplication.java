@@ -10,7 +10,7 @@ public class FlipFitApplication {
 
     public static void main(String[] args) {
 
-        MockDataLoader.loadMockData();
+//        MockDataLoader.loadMockData();
         
         Scanner sc = new Scanner(System.in);
         UserService userService = new UserServiceImpl();

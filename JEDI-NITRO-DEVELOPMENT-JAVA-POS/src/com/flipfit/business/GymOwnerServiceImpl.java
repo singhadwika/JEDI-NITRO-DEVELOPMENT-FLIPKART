@@ -63,7 +63,7 @@ public class GymOwnerServiceImpl implements GymOwnerService {
         if (center == null) return false;
 
         Slot slot = new Slot();
-
+        
         slot.setSlotId(slotCounter++);
         slot.setStartTime(startTime);
         slot.setEndTime(endTime);
