@@ -30,7 +30,7 @@ public class AdminMenu {
                     break;
 
                 case 2:
-                    adminService.viewPendingGymRequest().forEach(c -> System.out.println(c.getName()));
+                    adminService.viewPendingGymRequest().forEach(c -> System.out.println(c.getCenterId() + " " + c.getName()));
                     break;
 
                 case 3:

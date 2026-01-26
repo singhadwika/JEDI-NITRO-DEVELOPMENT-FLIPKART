@@ -9,6 +9,12 @@ public class GymCustomerDAOImpl implements GymCustomerDAO {
     private static List<GymCustomer> customerList = new ArrayList<>();
     private static int customerCounter = 1;
 
+    // Static method for cross-DAO registration (used by UserDAOImpl)
+    public static void addCustomerDirect(GymCustomer customer) {
+        // Don't reassign ID, it's already set by UserDAOImpl
+        customerList.add(customer);
+    }
+
     @Override
     public boolean addCustomer(GymCustomer customer) {
 

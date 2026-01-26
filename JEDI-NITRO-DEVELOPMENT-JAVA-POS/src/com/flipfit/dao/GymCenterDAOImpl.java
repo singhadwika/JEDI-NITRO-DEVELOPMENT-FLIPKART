@@ -16,6 +16,12 @@ public class GymCenterDAOImpl implements GymCenterDAO {
 
         center.setCenterId(centerCounter++);
         center.setApproved(false); // default pending
+        
+        // Initialize slots list if null
+        if (center.getSlots() == null) {
+            center.setSlots(new ArrayList<>());
+        }
+        
         gymCenters.add(center);
 
         return true;

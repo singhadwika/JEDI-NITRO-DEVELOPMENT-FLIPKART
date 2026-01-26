@@ -9,6 +9,13 @@ public class GymOwnerDAOImpl implements GymOwnerDAO {
     private static List<GymOwner> ownerList = new ArrayList<>();
     private static int ownerCounter = 1;
 
+    // Static method for cross-DAO registration (used by UserDAOImpl)
+    public static void addGymOwnerDirect(GymOwner owner) {
+        // Don't reassign ID, it's already set by UserDAOImpl
+        owner.setVerified(false);
+        ownerList.add(owner);
+    }
+
     @Override
     public boolean addGymOwner(GymOwner owner) {
 

@@ -6,84 +6,62 @@ import java.util.List;
 
 public class AdminDAOImpl implements AdminDAO {
 
-    private static List<Admin> adminList = new ArrayList<>();
-    private static List<GymCenter> gymCenters = new ArrayList<>();
-    private static List<GymOwner> gymOwners = new ArrayList<>();
-    private static List<User> users = new ArrayList<>();
+    // Delegate to actual DAOs instead of maintaining separate lists
+    private GymCenterDAO gymCenterDAO = new GymCenterDAOImpl();
+    private GymOwnerDAO gymOwnerDAO = new GymOwnerDAOImpl();
+    private UserDAO userDAO = new UserDAOImpl();
 
     @Override
     public boolean addAdmin(Admin admin) {
-        return adminList.add(admin);
+        return userDAO.addUser(admin);
     }
 
     @Override
     public Admin getAdminById(int adminId) {
-        for (Admin admin : adminList) {
-            if (admin.getId() == adminId) {
-                return admin;
-            }
+        User user = userDAO.getUserById(adminId);
+        if (user instanceof Admin) {
+            return (Admin) user;
         }
         return null;
     }
 
     @Override
     public List<GymCenter> getPendingGymCenters() {
-        List<GymCenter> pendingCenters = new ArrayList<>();
-
-        for (GymCenter center : gymCenters) {
-            if (!center.isApproved()) {
-                pendingCenters.add(center);
-            }
-        }
-
-        return pendingCenters;
+        return gymCenterDAO.getPendingGymCenters();
     }
 
     @Override
     public boolean approveGymCenter(int centerId) {
-        for (GymCenter center : gymCenters) {
-            if (center.getCenterId() == centerId) {
-                center.setApproved(true);
-                return true;
-            }
-        }
-        return false;
+        return gymCenterDAO.approveGymCenter(centerId);
     }
 
     @Override
     public boolean declineGymCenter(int centerId, String reason) {
-        for (GymCenter center : gymCenters) {
-            if (center.getCenterId() == centerId) {
-                gymCenters.remove(center);
-                System.out.println("Gym Center Declined Reason: " + reason);
-                return true;
-            }
-        }
-        return false;
+        System.out.println("Gym Center Declined Reason: " + reason);
+        return gymCenterDAO.rejectGymCenter(centerId);
     }
 
     @Override
     public List<User> getAllUsers() {
-        return users;
+        return userDAO.getAllUsers();
     }
 
     @Override
     public List<GymCenter> getAllGymCenters() {
-        return gymCenters;
+        return gymCenterDAO.getAllGymCenters();
     }
 
     @Override
     public List<GymOwner> getAllGymOwners() {
-        return gymOwners;
+        return gymOwnerDAO.getAllGymOwners();
     }
 
     @Override
     public boolean verifyGymOwner(int ownerId) {
-        for (GymOwner owner : gymOwners) {
-            if (owner.getId() == ownerId) {
-                owner.setVerified(true);
-                return true;
-            }
+        GymOwner owner = gymOwnerDAO.getGymOwnerById(ownerId);
+        if (owner != null) {
+            owner.setVerified(true);
+            return true;
         }
         return false;
     }
@@ -91,8 +69,8 @@ public class AdminDAOImpl implements AdminDAO {
     @Override
     public String getMonthlyReport() {
         return "Monthly Report: \n"
-                + "Total Users: " + users.size() + "\n"
-                + "Total Gym Centers: " + gymCenters.size() + "\n"
-                + "Total Gym Owners: " + gymOwners.size();
+                + "Total Users: " + userDAO.getAllUsers().size() + "\n"
+                + "Total Gym Centers: " + gymCenterDAO.getAllGymCenters().size() + "\n"
+                + "Total Gym Owners: " + gymOwnerDAO.getAllGymOwners().size();
     }
 }
