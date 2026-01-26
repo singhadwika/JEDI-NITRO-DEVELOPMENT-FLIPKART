@@ -11,6 +11,8 @@ public class Booking {
     private int slotId;
     private int centerId;
 
+	public Booking() {}
+
     public Booking(int bookingId, LocalDate bookingDate, boolean status, int userId, int slotId, int centerId) {
     	this.bookingId = bookingId;
     	this.bookingDate = bookingDate;

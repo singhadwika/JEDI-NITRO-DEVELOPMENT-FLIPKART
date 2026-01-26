@@ -11,6 +11,8 @@ public class Slot {
     private int availableSeats;
     private int centerId;
 
+	public Slot() {}
+
     public Slot(int slotId, LocalTime startTime, LocalTime endTime, int totalSeats, int availableSeats, int centerId) {
     	this.slotId = slotId;
     	this.startTime = startTime;
