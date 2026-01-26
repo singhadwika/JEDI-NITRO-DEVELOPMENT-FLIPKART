@@ -11,6 +11,8 @@ public class GymCenter {
     private boolean approved;
     private int ownerId;
 
+	public GymCenter() {}
+
     public GymCenter(int centerId, String name, String location, boolean approved, int ownerId) {
     	this.centerId = centerId;
     	this.name = name;

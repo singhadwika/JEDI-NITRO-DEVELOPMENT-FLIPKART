@@ -7,6 +7,8 @@ public class GymOwner extends User {
 	private boolean isVerified;
     private List<GymCenter> gymCenters;
 
+	public GymOwner() {}
+
     public GymOwner(int id, String name, String email, String password, boolean isVerified) {
     	this.setId(id);
     	this.setName(name);

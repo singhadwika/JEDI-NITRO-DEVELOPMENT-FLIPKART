@@ -6,6 +6,8 @@ public class GymCustomer extends User {
 
 	private List<Slot> bookedSlots;
 
+	public GymCustomer() {}
+
     public GymCustomer(int id, String name, String email, String password) {
     	this.setId(id);
     	this.setName(name);
