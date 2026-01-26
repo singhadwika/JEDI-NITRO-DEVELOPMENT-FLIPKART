@@ -3,67 +3,25 @@ package com.flipfit.business;
 import com.flipfit.bean.*;
 import java.util.List;
 
-/**
- * Implementation of AdminServiceInterface.
- */
-public class AdminService implements AdminServiceInterface {
+public interface AdminService {
     
-    @Override
-    public String getMonthlyDetails() {
-        // TODO: Implement
-        return null;
-    }
+    public String getMonthlyDetails();
     
-    @Override
-    public List<GymCenter> viewPendingGymRequest() {
-        // TODO: Implement
-        return null;
-    }
+    public List<GymCenter> viewPendingGymRequest();
     
-    @Override
-    public boolean approveRequest(int centerId) {
-        // TODO: Implement
-        return false;
-    }
+    public boolean approveRequest(int centerId);
     
-    @Override
-    public boolean declineRequest(int centerId, String reason) {
-        // TODO: Implement
-        return false;
-    }
+    public boolean declineRequest(int centerId, String reason);
     
-    @Override
-    public List<User> viewAllUsers() {
-        // TODO: Implement
-        return null;
-    }
+    public List<User> viewAllUsers();
     
-    @Override
-    public List<GymCenter> viewAllGymCenters() {
-        // TODO: Implement
-        return null;
-    }
+    public List<GymCenter> viewAllGymCenters();
     
-    @Override
-    public List<GymOwner> viewAllGymOwners() {
-        // TODO: Implement
-        return null;
-    }
+    public List<GymOwner> viewAllGymOwners();
     
-    @Override
-    public boolean verifyGymOwner(int ownerId) {
-        // TODO: Implement
-        return false;
-    }
+    public boolean verifyGymOwner(int ownerId);
     
-    @Override
-    public Admin getAdminById(int adminId) {
-        // TODO: Implement
-        return null;
-    }
+    public Admin getAdminById(int adminId);
     
-    public boolean registerAdmin(Admin admin) {
-        // TODO: Implement
-        return false;
-    }
+    public boolean registerAdmin(Admin admin);
 }
