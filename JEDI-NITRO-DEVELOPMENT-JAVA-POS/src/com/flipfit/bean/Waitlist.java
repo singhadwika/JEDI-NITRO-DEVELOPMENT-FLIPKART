@@ -9,6 +9,10 @@ public class Waitlist {
     private int slotId;
     private LocalDateTime requestTime;
 
+    // ADD THIS: Default constructor for JDBC/DAO mapping
+    public Waitlist() {
+    }
+
     public Waitlist(int userId, int slotId) {
     	this.userId = userId;
     	this.slotId = slotId;

@@ -1,155 +1,176 @@
 package com.flipfit.dao;
 
-import com.flipfit.bean.GymCenter;
 import com.flipfit.bean.Slot;
-
+import com.flipfit.helper.DatabaseConnector;
+import java.sql.*;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SlotDAOImpl implements SlotDAO {
 
-    private GymCenterDAO gymCenterDAO = new GymCenterDAOImpl();
-    private static int slotCounter = 1;
-
     @Override
     public Slot createSlot(int centerId, Slot slot) {
+        String query = "INSERT INTO Slot (startTime, endTime, totalSeats, availableSeats, centerId) VALUES (?, ?, ?, ?, ?)";
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+            
+            stmt.setTime(1, Time.valueOf(slot.getStartTime()));
+            stmt.setTime(2, Time.valueOf(slot.getEndTime()));
+            stmt.setInt(3, slot.getTotalSeats());
+            stmt.setInt(4, slot.getTotalSeats()); // Available seats initially equal total seats
+            stmt.setInt(5, centerId);
 
-        GymCenter center = gymCenterDAO.getGymCenterById(centerId);
-
-        if (center == null) return null;
-
-        slot.setSlotId(slotCounter++);
-        center.getSlots().add(slot);
-
-        return slot;
+            int affectedRows = stmt.executeUpdate();
+            if (affectedRows > 0) {
+                try (ResultSet rs = stmt.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        slot.setSlotId(rs.getInt(1));
+                    }
+                }
+                return slot;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
     public Slot getSlotById(int slotId) {
-
-        List<GymCenter> centers = gymCenterDAO.getAllGymCenters();
-
-        for (GymCenter center : centers) {
-            for (Slot slot : center.getSlots()) {
-
-                if (slot.getSlotId() == slotId) {
-                    return slot;
+        String query = "SELECT * FROM Slot WHERE slotId = ?";
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, slotId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return mapResultSetToSlot(rs);
                 }
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
         return null;
     }
 
     @Override
     public List<Slot> getSlotsByCenter(int centerId) {
-
-        GymCenter center = gymCenterDAO.getGymCenterById(centerId);
-
-        if (center != null) {
-            return center.getSlots();
+        List<Slot> slots = new ArrayList<>();
+        String query = "SELECT * FROM Slot WHERE centerId = ?";
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, centerId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    slots.add(mapResultSetToSlot(rs));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        return new ArrayList<>();
+        return slots;
     }
 
     @Override
     public List<Slot> getAvailableSlotsByCenter(int centerId) {
-
-        List<Slot> availableSlots = new ArrayList<>();
-
-        GymCenter center = gymCenterDAO.getGymCenterById(centerId);
-
-        if (center == null) return availableSlots;
-
-        for (Slot slot : center.getSlots()) {
-
-            if (slot.getAvailableSeats() > 0) {
-                availableSlots.add(slot);
+        List<Slot> slots = new ArrayList<>();
+        String query = "SELECT * FROM Slot WHERE centerId = ? AND availableSeats > 0";
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, centerId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    slots.add(mapResultSetToSlot(rs));
+                }
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        return availableSlots;
-    }
-
-    @Override
-    public boolean isSlotAvailable(int slotId) {
-
-        Slot slot = getSlotById(slotId);
-
-        return slot != null && slot.getAvailableSeats() > 0;
+        return slots;
     }
 
     @Override
     public boolean lockSlot(int slotId) {
-
-        Slot slot = getSlotById(slotId);
-
-        if (slot != null && slot.getAvailableSeats() > 0) {
-
-            slot.setAvailableSeats(slot.getAvailableSeats() - 1);
-            return true;
+        // Atomic decrement of seats
+        String query = "UPDATE Slot SET availableSeats = availableSeats - 1 WHERE slotId = ? AND availableSeats > 0";
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, slotId);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
         return false;
     }
 
     @Override
     public boolean unlockSlot(int slotId) {
-
-        Slot slot = getSlotById(slotId);
-
-        if (slot != null) {
-
-            if (slot.getAvailableSeats() < slot.getTotalSeats()) {
-
-                slot.setAvailableSeats(slot.getAvailableSeats() + 1);
-                return true;
-            }
+        String query = "UPDATE Slot SET availableSeats = availableSeats + 1 WHERE slotId = ? AND availableSeats < totalSeats";
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, slotId);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        return false;
-    }
-
-    @Override
-    public boolean updateSlot(int slotId, LocalTime startTime, LocalTime endTime, int totalSeats) {
-
-        Slot slot = getSlotById(slotId);
-
-        if (slot != null) {
-
-            slot.setStartTime(startTime);
-            slot.setEndTime(endTime);
-            slot.setTotalSeats(totalSeats);
-
-            if (slot.getAvailableSeats() > totalSeats) {
-                slot.setAvailableSeats(totalSeats);
-            }
-
-            return true;
-        }
-
         return false;
     }
 
     @Override
     public boolean deleteSlot(int slotId) {
-
-        List<GymCenter> centers = gymCenterDAO.getAllGymCenters();
-
-        for (GymCenter center : centers) {
-
-            for (Slot slot : center.getSlots()) {
-
-                if (slot.getSlotId() == slotId) {
-
-                    center.getSlots().remove(slot);
-                    return true;
-                }
-            }
+        String query = "DELETE FROM Slot WHERE slotId = ?";
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, slotId);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
         return false;
     }
+
+    private Slot mapResultSetToSlot(ResultSet rs) throws SQLException {
+        Slot slot = new Slot();
+        slot.setSlotId(rs.getInt("slotId"));
+        slot.setStartTime(rs.getTime("startTime").toLocalTime());
+        slot.setEndTime(rs.getTime("endTime").toLocalTime());
+        slot.setTotalSeats(rs.getInt("totalSeats"));
+        slot.setAvailableSeats(rs.getInt("availableSeats"));
+        return slot;
+    }
+    @Override
+    public boolean isSlotAvailable(int slotId) {
+        String query = "SELECT availableSeats FROM Slot WHERE slotId = ? AND availableSeats > 0";
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, slotId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                return rs.next(); // Returns true if a row with available seats exists
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateSlot(int slotId, LocalTime startTime, LocalTime endTime, int totalSeats) {
+        String query = "UPDATE Slot SET startTime = ?, endTime = ?, totalSeats = ?, availableSeats = ? WHERE slotId = ?";
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+            stmt.setTime(1, Time.valueOf(startTime));
+            stmt.setTime(2, Time.valueOf(endTime));
+            stmt.setInt(3, totalSeats);
+            stmt.setInt(4, totalSeats); // Resetting available seats to new total
+            stmt.setInt(5, slotId);
+
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // You can implement updateSlot using a similar UPDATE pattern.
 }
