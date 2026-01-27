@@ -67,9 +67,7 @@ public class GymCustomerServiceImpl implements GymCustomerService {
 
         Booking booking = bookingService.createBooking(customerId, slotId, centerId, today);
 
-        if (booking != null) {
-            bookingService.confirmBooking(booking.getBookingId());
-        }
+        bookingService.confirmBooking(booking.getBookingId());
 
         return booking;
     }

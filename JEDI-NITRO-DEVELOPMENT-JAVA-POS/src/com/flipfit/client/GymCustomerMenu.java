@@ -1,10 +1,7 @@
 package com.flipfit.client;
 
 import com.flipfit.business.*;
-import com.flipfit.bean.Slot;
-import com.flipfit.bean.Booking;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class GymCustomerMenu {
@@ -38,12 +35,7 @@ public class GymCustomerMenu {
                     System.out.print("Enter Center ID: ");
                     int centerId = sc.nextInt();
 
-                    List<Slot> slots = customerService.viewSlotsByCenter(centerId);
-                    if (slots.isEmpty()) {
-                        System.out.println("No slots available for this center.");
-                    } else {
-                        slots.forEach(s -> System.out.println("Slot ID: " + s.getSlotId() + " | Time: " + s.getStartTime() + "-" + s.getEndTime() + " | Available Seats: " + s.getAvailableSeats()));
-                    }
+                    customerService.viewSlotsByCenter(centerId).forEach(s -> System.out.println(s.getSlotId() + " Seats: " + s.getAvailableSeats()));
                     
                     break;
 
@@ -54,13 +46,9 @@ public class GymCustomerMenu {
                     System.out.print("Enter Slot ID: ");
                     int slotId = sc.nextInt();
 
-                    Booking booking = customerService.bookSlot(customerId, slotId, cId);
+                    customerService.bookSlot(customerId, slotId, cId);
 
-                    if (booking != null) {
-                        System.out.println("Slot Booked! Booking ID: " + booking.getBookingId());
-                    } else {
-                        System.out.println("Booking failed! Please check if the slot exists and has available seats.");
-                    }
+                    System.out.println("Slot Booked!");
                     break;
 
                 case 4:

@@ -12,7 +12,7 @@ public interface GymOwnerService {
     
     public boolean updateCenterDetails(int centerId, String name, String location);
     
-    public Slot addSlot(int centerId, LocalTime startTime, LocalTime endTime, int totalSeats);
+    public boolean addSlot(int centerId, LocalTime startTime, LocalTime endTime, int totalSeats);
     
     public boolean removeSlot(int slotId);
     

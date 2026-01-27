@@ -12,7 +12,8 @@ public class GymOwnerServiceImpl implements GymOwnerService {
     private GymOwnerDAO ownerDAO = new GymOwnerDAOImpl();
     private GymCenterDAO centerDAO = new GymCenterDAOImpl();
     private BookingService bookingService = new BookingServiceImpl();
-    private SlotService slotService = new SlotServiceImpl();
+
+    private static int slotCounter = 1;
 
     // ---------------- OWNER ----------------
 
@@ -55,14 +56,23 @@ public class GymOwnerServiceImpl implements GymOwnerService {
     // ---------------- SLOT ----------------
 
     @Override
-    public Slot addSlot(int centerId, LocalTime startTime, LocalTime endTime, int totalSeats) {
+    public boolean addSlot(int centerId, LocalTime startTime, LocalTime endTime, int totalSeats) {
 
         GymCenter center = centerDAO.getGymCenterById(centerId);
 
-        if (center == null) return null;
+        if (center == null) return false;
 
-        // Use SlotService to create slot in database
-        return slotService.createSlot(centerId, startTime, endTime, totalSeats);
+        Slot slot = new Slot();
+        
+        slot.setSlotId(slotCounter++);
+        slot.setStartTime(startTime);
+        slot.setEndTime(endTime);
+        slot.setTotalSeats(totalSeats);
+        slot.setAvailableSeats(totalSeats);
+
+        center.getSlots().add(slot);
+
+        return true;
     }
 
     @Override

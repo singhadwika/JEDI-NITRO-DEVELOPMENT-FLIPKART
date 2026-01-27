@@ -2,7 +2,6 @@ package com.flipfit.client;
 
 import com.flipfit.business.*;
 import com.flipfit.bean.GymCenter;
-import com.flipfit.bean.Slot;
 
 import java.time.LocalTime;
 import java.util.Scanner;
@@ -63,13 +62,9 @@ public class GymOwnerMenu {
                     System.out.print("Total Seats: ");
                     int seats = sc.nextInt();
 
-                    Slot newSlot = ownerService.addSlot(centerId, LocalTime.of(sh, 0), LocalTime.of(eh, 0), seats);
+                    ownerService.addSlot(centerId, LocalTime.of(sh, 0), LocalTime.of(eh, 0), seats);
 
-                    if (newSlot != null) {
-                        System.out.println("Slot Added! Slot ID: " + newSlot.getSlotId());
-                    } else {
-                        System.out.println("Failed to add slot. Make sure the center exists.");
-                    }
+                    System.out.println("Slot Added!");
                     break;
 
                 case 4:
