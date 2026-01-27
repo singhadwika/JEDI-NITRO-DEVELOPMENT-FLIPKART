@@ -3,153 +3,239 @@ package com.flipfit.dao;
 import com.flipfit.bean.GymCenter;
 import com.flipfit.bean.Slot;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GymCenterDAOImpl implements GymCenterDAO {
 
-    private static List<GymCenter> gymCenters = new ArrayList<>();
-    private static int centerCounter = 1;
-
     @Override
     public boolean addGymCenter(GymCenter center) {
-
-        center.setCenterId(centerCounter++);
-        center.setApproved(false); // default pending
+        String sql = "INSERT INTO GymCenter (name, location, is_approved, owner_id) VALUES (?, ?, ?, ?)";
         
-        // Initialize slots list if null
-        if (center.getSlots() == null) {
-            center.setSlots(new ArrayList<>());
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            
+            pstmt.setString(1, center.getName());
+            pstmt.setString(2, center.getLocation());
+            pstmt.setBoolean(3, false); // default pending
+            pstmt.setInt(4, center.getOwnerId());
+            
+            int affectedRows = pstmt.executeUpdate();
+            
+            if (affectedRows > 0) {
+                try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        center.setCenterId(generatedKeys.getInt(1));
+                        center.setApproved(false);
+                        return true;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error adding gym center: " + e.getMessage());
         }
-        
-        gymCenters.add(center);
-
-        return true;
+        return false;
     }
 
     @Override
     public GymCenter getGymCenterById(int centerId) {
-
-        for (GymCenter center : gymCenters) {
-            if (center.getCenterId() == centerId) {
-                return center;
+        String sql = "SELECT * FROM GymCenter WHERE center_id = ?";
+        
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setInt(1, centerId);
+            
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return mapResultSetToGymCenter(rs);
+                }
             }
+        } catch (SQLException e) {
+            System.err.println("Error getting gym center by ID: " + e.getMessage());
         }
         return null;
     }
 
     @Override
     public List<GymCenter> getAllGymCenters() {
-        return gymCenters;
+        List<GymCenter> centers = new ArrayList<>();
+        String sql = "SELECT * FROM GymCenter";
+        
+        try (Connection conn = DBConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            
+            while (rs.next()) {
+                centers.add(mapResultSetToGymCenter(rs));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error getting all gym centers: " + e.getMessage());
+        }
+        return centers;
     }
 
     @Override
     public List<GymCenter> getApprovedGymCenters() {
-
-        List<GymCenter> approvedCenters = new ArrayList<>();
-
-        for (GymCenter center : gymCenters) {
-            if (center.isApproved()) {
-                approvedCenters.add(center);
+        List<GymCenter> centers = new ArrayList<>();
+        String sql = "SELECT * FROM GymCenter WHERE is_approved = TRUE";
+        
+        try (Connection conn = DBConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            
+            while (rs.next()) {
+                centers.add(mapResultSetToGymCenter(rs));
             }
+        } catch (SQLException e) {
+            System.err.println("Error getting approved gym centers: " + e.getMessage());
         }
-
-        return approvedCenters;
+        return centers;
     }
 
     @Override
     public List<GymCenter> getPendingGymCenters() {
-
-        List<GymCenter> pendingCenters = new ArrayList<>();
-
-        for (GymCenter center : gymCenters) {
-            if (!center.isApproved()) {
-                pendingCenters.add(center);
+        List<GymCenter> centers = new ArrayList<>();
+        String sql = "SELECT * FROM GymCenter WHERE is_approved = FALSE";
+        
+        try (Connection conn = DBConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            
+            while (rs.next()) {
+                centers.add(mapResultSetToGymCenter(rs));
             }
+        } catch (SQLException e) {
+            System.err.println("Error getting pending gym centers: " + e.getMessage());
         }
-
-        return pendingCenters;
+        return centers;
     }
 
     @Override
     public List<GymCenter> getGymCentersByOwner(int ownerId) {
-
-        List<GymCenter> ownerCenters = new ArrayList<>();
-
-        for (GymCenter center : gymCenters) {
-            if (center.getOwnerId() == ownerId) {
-                ownerCenters.add(center);
+        List<GymCenter> centers = new ArrayList<>();
+        String sql = "SELECT * FROM GymCenter WHERE owner_id = ?";
+        
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setInt(1, ownerId);
+            
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    centers.add(mapResultSetToGymCenter(rs));
+                }
             }
+        } catch (SQLException e) {
+            System.err.println("Error getting gym centers by owner: " + e.getMessage());
         }
-
-        return ownerCenters;
+        return centers;
     }
 
     @Override
     public boolean updateGymCenter(int centerId, String name, String location) {
-
-        for (GymCenter center : gymCenters) {
-            if (center.getCenterId() == centerId) {
-
-                center.setName(name);
-                center.setLocation(location);
-                return true;
-            }
+        String sql = "UPDATE GymCenter SET name = ?, location = ? WHERE center_id = ?";
+        
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setString(1, name);
+            pstmt.setString(2, location);
+            pstmt.setInt(3, centerId);
+            
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.err.println("Error updating gym center: " + e.getMessage());
         }
-
         return false;
     }
 
     @Override
     public boolean approveGymCenter(int centerId) {
-
-        for (GymCenter center : gymCenters) {
-            if (center.getCenterId() == centerId) {
-
-                center.setApproved(true);
-                return true;
-            }
+        String sql = "UPDATE GymCenter SET is_approved = TRUE WHERE center_id = ?";
+        
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setInt(1, centerId);
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.err.println("Error approving gym center: " + e.getMessage());
         }
-
         return false;
     }
 
     @Override
     public boolean rejectGymCenter(int centerId) {
-
-        for (GymCenter center : gymCenters) {
-            if (center.getCenterId() == centerId) {
-
-                gymCenters.remove(center);
-                return true;
-            }
+        String sql = "DELETE FROM GymCenter WHERE center_id = ?";
+        
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setInt(1, centerId);
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.err.println("Error rejecting gym center: " + e.getMessage());
         }
-
         return false;
     }
 
     @Override
     public List<Slot> getAvailableSlots(int centerId) {
-
-        GymCenter center = getGymCenterById(centerId);
-
-        if (center != null) {
-            return center.getSlots();
+        List<Slot> slots = new ArrayList<>();
+        String sql = "SELECT * FROM Slot WHERE center_id = ? AND available_seats > 0";
+        
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setInt(1, centerId);
+            
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    slots.add(mapResultSetToSlot(rs));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error getting available slots: " + e.getMessage());
         }
-
-        return new ArrayList<>();
+        return slots;
     }
 
     @Override
     public boolean requestForApproval(int centerId) {
-
-        GymCenter center = getGymCenterById(centerId);
-
-        if (center != null) {
-            center.setApproved(false);
-            return true;
+        String sql = "UPDATE GymCenter SET is_approved = FALSE WHERE center_id = ?";
+        
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setInt(1, centerId);
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.err.println("Error requesting approval: " + e.getMessage());
         }
-
         return false;
+    }
+
+    private GymCenter mapResultSetToGymCenter(ResultSet rs) throws SQLException {
+        GymCenter center = new GymCenter();
+        center.setCenterId(rs.getInt("center_id"));
+        center.setName(rs.getString("name"));
+        center.setLocation(rs.getString("location"));
+        center.setApproved(rs.getBoolean("is_approved"));
+        center.setOwnerId(rs.getInt("owner_id"));
+        center.setSlots(new ArrayList<>()); // Slots loaded separately
+        return center;
+    }
+
+    private Slot mapResultSetToSlot(ResultSet rs) throws SQLException {
+        Slot slot = new Slot();
+        slot.setSlotId(rs.getInt("slot_id"));
+        slot.setStartTime(rs.getTime("start_time").toLocalTime());
+        slot.setEndTime(rs.getTime("end_time").toLocalTime());
+        slot.setTotalSeats(rs.getInt("total_seats"));
+        slot.setAvailableSeats(rs.getInt("available_seats"));
+        slot.setCenterId(rs.getInt("center_id"));
+        return slot;
     }
 }

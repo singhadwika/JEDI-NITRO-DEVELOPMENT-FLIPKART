@@ -20,14 +20,7 @@ public class MockDataLoader {
         BookingService bookingService = new BookingServiceImpl();
 
         // ------------------ ADMIN ------------------
-
-        Admin admin = new Admin();
-        admin.setName("System Admin");
-        admin.setEmail("admin@flipfit.com");
-        admin.setPassword("admin123");
-
-        adminService.registerAdmin(admin);
-        userService.register(admin);
+        // Note: Default admin is already inserted via schema.sql
 
         // ------------------ GYM OWNERS ------------------
 
@@ -35,16 +28,14 @@ public class MockDataLoader {
         owner1.setName("Ayush Samal");
         owner1.setEmail("ayush@flipfit.com");
         owner1.setPassword("ayush123");
-
-        ownerService.registerGymOwner(owner1);
+        owner1.setRole("GYM_OWNER");
         userService.register(owner1);
 
         GymOwner owner2 = new GymOwner();
         owner2.setName("Anshuman Mahabhoi");
         owner2.setEmail("anshuman@flipfit.com");
         owner2.setPassword("anshuman123");
-
-        ownerService.registerGymOwner(owner2);
+        owner2.setRole("GYM_OWNER");
         userService.register(owner2);
 
         // ------------------ CUSTOMERS ------------------
@@ -53,16 +44,14 @@ public class MockDataLoader {
         customer1.setName("Saumyajeet");
         customer1.setEmail("saumyajeet@gmail.com");
         customer1.setPassword("saumyajeet123");
-
-        customerService.registerCustomer(customer1);
+        customer1.setRole("GYM_CUSTOMER");
         userService.register(customer1);
 
         GymCustomer customer2 = new GymCustomer();
         customer2.setName("Aman Rai");
         customer2.setEmail("aman@gmail.com");
         customer2.setPassword("aman123");
-
-        customerService.registerCustomer(customer2);
+        customer2.setRole("GYM_CUSTOMER");
         userService.register(customer2);
 
         // ------------------ GYM CENTERS ------------------

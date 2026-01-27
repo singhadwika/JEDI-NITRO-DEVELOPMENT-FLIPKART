@@ -46,12 +46,15 @@ public class FlipFitApplication {
 
                     if (role.equals("ADMIN")) {
                         user = new Admin();
+                        user.setRole("ADMIN");
                     } 
                     else if (role.equals("OWNER")) {
                         user = new GymOwner();
+                        user.setRole("GYM_OWNER");
                     } 
                     else if (role.equals("CUSTOMER")) {
                         user = new GymCustomer();
+                        user.setRole("GYM_CUSTOMER");
                     } 
                     else {
                         System.out.println("Invalid Role!");
