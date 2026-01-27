@@ -1,5 +1,6 @@
 package com.flipfit.bean;
 
+import java.util.ArrayList; // Added import
 import java.util.List;
 
 public class GymCenter {
@@ -7,7 +8,8 @@ public class GymCenter {
     private int centerId;
     private String name;
     private String location;
-    private List<Slot> slots;
+    // INITIALIZED: Prevents NullPointerException
+    private List<Slot> slots = new ArrayList<>(); 
     private boolean approved;
     private int ownerId;
 
@@ -46,6 +48,10 @@ public class GymCenter {
 	}
 
 	public List<Slot> getSlots() {
+        // NULL CHECK: Extra safety for existing logic
+        if (this.slots == null) {
+            this.slots = new ArrayList<>();
+        }
 		return slots;
 	}
 

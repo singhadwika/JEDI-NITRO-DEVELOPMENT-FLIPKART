@@ -56,25 +56,20 @@ public class GymOwnerServiceImpl implements GymOwnerService {
     // ---------------- SLOT ----------------
 
     @Override
-    public boolean addSlot(int centerId, LocalTime startTime, LocalTime endTime, int totalSeats) {
+ // Inside com.flipfit.business.GymOwnerServiceImpl
+    
+   
+   public boolean addSlot(int centerId, LocalTime startTime, LocalTime endTime, int totalSeats) {
+       Slot slot = new Slot();
+       slot.setStartTime(startTime);
+       slot.setEndTime(endTime);
+       slot.setTotalSeats(totalSeats);
+       slot.setAvailableSeats(totalSeats);
 
-        GymCenter center = centerDAO.getGymCenterById(centerId);
-
-        if (center == null) return false;
-
-        Slot slot = new Slot();
-        
-        slot.setSlotId(slotCounter++);
-        slot.setStartTime(startTime);
-        slot.setEndTime(endTime);
-        slot.setTotalSeats(totalSeats);
-        slot.setAvailableSeats(totalSeats);
-
-        center.getSlots().add(slot);
-
-        return true;
-    }
-
+       SlotDAO slotDAO = new SlotDAOImpl();
+       // createSlot returns the Slot object if successful, null otherwise
+       return slotDAO.createSlot(centerId, slot) != null;
+   }
     @Override
     public boolean removeSlot(int slotId) {
 

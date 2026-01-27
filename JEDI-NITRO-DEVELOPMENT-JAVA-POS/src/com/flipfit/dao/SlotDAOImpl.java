@@ -91,7 +91,7 @@ public class SlotDAOImpl implements SlotDAO {
 
     @Override
     public boolean lockSlot(int slotId) {
-        // Atomic decrement of seats
+        // Atomic decrement of seats to prevent overbooking
         String query = "UPDATE Slot SET availableSeats = availableSeats - 1 WHERE slotId = ? AND availableSeats > 0";
         try (Connection conn = DatabaseConnector.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -129,15 +129,6 @@ public class SlotDAOImpl implements SlotDAO {
         return false;
     }
 
-    private Slot mapResultSetToSlot(ResultSet rs) throws SQLException {
-        Slot slot = new Slot();
-        slot.setSlotId(rs.getInt("slotId"));
-        slot.setStartTime(rs.getTime("startTime").toLocalTime());
-        slot.setEndTime(rs.getTime("endTime").toLocalTime());
-        slot.setTotalSeats(rs.getInt("totalSeats"));
-        slot.setAvailableSeats(rs.getInt("availableSeats"));
-        return slot;
-    }
     @Override
     public boolean isSlotAvailable(int slotId) {
         String query = "SELECT availableSeats FROM Slot WHERE slotId = ? AND availableSeats > 0";
@@ -145,7 +136,7 @@ public class SlotDAOImpl implements SlotDAO {
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, slotId);
             try (ResultSet rs = stmt.executeQuery()) {
-                return rs.next(); // Returns true if a row with available seats exists
+                return rs.next();
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -162,7 +153,7 @@ public class SlotDAOImpl implements SlotDAO {
             stmt.setTime(1, Time.valueOf(startTime));
             stmt.setTime(2, Time.valueOf(endTime));
             stmt.setInt(3, totalSeats);
-            stmt.setInt(4, totalSeats); // Resetting available seats to new total
+            stmt.setInt(4, totalSeats);
             stmt.setInt(5, slotId);
 
             return stmt.executeUpdate() > 0;
@@ -172,5 +163,13 @@ public class SlotDAOImpl implements SlotDAO {
         return false;
     }
 
-    // You can implement updateSlot using a similar UPDATE pattern.
+    private Slot mapResultSetToSlot(ResultSet rs) throws SQLException {
+        Slot slot = new Slot();
+        slot.setSlotId(rs.getInt("slotId"));
+        slot.setStartTime(rs.getTime("startTime").toLocalTime());
+        slot.setEndTime(rs.getTime("endTime").toLocalTime());
+        slot.setTotalSeats(rs.getInt("totalSeats"));
+        slot.setAvailableSeats(rs.getInt("availableSeats"));
+        return slot;
+    }
 }
