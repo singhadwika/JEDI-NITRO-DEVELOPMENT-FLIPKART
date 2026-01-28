@@ -4,6 +4,7 @@ import com.flipfit.bean.User;
 import com.flipfit.bean.GymOwner;
 import com.flipfit.bean.GymCustomer;
 import com.flipfit.bean.Admin;
+import com.flipfit.utils.DBConnection;
 
 import java.sql.*;
 import java.util.ArrayList;

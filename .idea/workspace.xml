@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3fcc2fc3-2d53-47a8-b9e2-f59d34408af9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/.project" beforeDir="false" afterPath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/bean/Admin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/bean/Booking.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/bean/Demo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/bean/GymCenter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/bean/GymCustomer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/bean/GymOwner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/bean/Notification.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/bean/Slot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/bean/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/bean/Waitlist.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/AdminService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/AdminServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/BookingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/BookingServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/Demo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/GymCenterService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/GymCenterServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/GymCustomerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/GymCustomerServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/GymOwnerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/GymOwnerServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/NotificationService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/NotificationServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/SlotService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/SlotServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/UserServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/WaitlistService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/business/WaitlistServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/client/AdminMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/client/Demo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/client/FlipFitApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/client/GymCustomerMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/client/GymOwnerMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/constants/Demo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/dao/Demo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/exception/Demo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/helper/Demo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/bin/com/flipfit/validation/Demo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/business/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/business/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/business/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/business/BookingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/business/GymCenterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/business/GymCenterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/business/GymCustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/business/GymCustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/business/GymOwnerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/business/GymOwnerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/business/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/business/NotificationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/business/SlotService.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/business/SlotService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/business/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/business/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/business/WaitlistService.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/business/WaitlistService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/client/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/client/AdminMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/client/FlipFitApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/client/FlipFitApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/client/GymCustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/client/GymCustomerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/client/GymOwnerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/JEDI-NITRO-DEVELOPMENT-JAVA-POS/src/com/flipfit/client/GymOwnerMenu.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="38eUAnB2yB05mEQ48vmzxCI8CIu" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/shiv.pandey1/Downloads/JEDI-NITRO-DEVELOPMENT-FLIPKART&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="FlipFit Application" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="JEDI-NITRO-DEVELOPMENT-FLIPKART" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="JEDI-NITRO-DEVELOPMENT-FLIPKART" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-26cb7f24e5b0-intellij.indexing.shared.core-IU-253.29346.240" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.29346.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3fcc2fc3-2d53-47a8-b9e2-f59d34408af9" name="Changes" comment="" />
+      <created>1769159389715</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1769159389715</updated>
+      <workItem from="1769159390938" duration="2979000" />
+      <workItem from="1769162461397" duration="1370000" />
+      <workItem from="1769164305367" duration="68000" />
+      <workItem from="1769164386398" duration="415000" />
+      <workItem from="1769164846057" duration="546000" />
+      <workItem from="1769165396956" duration="1031000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

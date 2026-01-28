@@ -1,6 +1,7 @@
 package com.flipfit.dao;
 
 import com.flipfit.bean.Waitlist;
+import com.flipfit.utils.DBConnection;
 
 import java.sql.*;
 import java.util.ArrayList;

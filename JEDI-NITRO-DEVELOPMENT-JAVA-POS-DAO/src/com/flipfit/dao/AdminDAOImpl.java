@@ -1,7 +1,6 @@
 package com.flipfit.dao;
 
-import com.flipfit.bean.*;
-
+import com.flipfit.bean.*;import com.flipfit.utils.DBConnection;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

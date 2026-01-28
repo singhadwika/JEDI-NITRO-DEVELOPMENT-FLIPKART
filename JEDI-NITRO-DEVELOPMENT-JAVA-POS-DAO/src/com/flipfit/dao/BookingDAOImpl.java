@@ -1,6 +1,7 @@
 package com.flipfit.dao;
 
 import com.flipfit.bean.Booking;
+import com.flipfit.utils.DBConnection;
 
 import java.sql.*;
 import java.time.LocalDate;
