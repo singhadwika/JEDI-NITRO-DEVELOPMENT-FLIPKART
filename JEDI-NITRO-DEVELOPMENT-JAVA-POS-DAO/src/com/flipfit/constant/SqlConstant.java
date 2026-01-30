@@ -12,7 +12,7 @@ public class SqlConstant {
     // Database configuration constants
     public static final String DB_URL = "jdbc:mysql://localhost:3306/flipfit";
     public static final String DB_USER = "root";
-    public static final String DB_PASSWORD = "30062004";
+    public static final String DB_PASSWORD = "root@sv123";
     public static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
 
     // User-related SQL queries
