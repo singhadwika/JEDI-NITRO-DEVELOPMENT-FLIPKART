@@ -1,0 +1,46 @@
+# FlipFit Dropwizard Application Configuration
+
+# Server Configuration
+server:
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 8081
+  requestLog:
+    appenders:
+      - type: console
+
+# Database Configuration
+database:
+  driverClass: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/flipfit
+  user: root
+  password: root
+  maxWaitForConnection: 1s
+  validationQuery: "SELECT 1"
+  validationQueryTimeout: 3s
+  minSize: 8
+  maxSize: 32
+  checkConnectionWhileIdle: false
+  evictionInterval: 10s
+  minIdleTime: 1 minute
+
+# Logging Configuration
+logging:
+  level: INFO
+  appenders:
+    - type: console
+      threshold: ALL
+      timeZone: UTC
+    - type: file
+      threshold: INFO
+      currentLogFilename: ./logs/flipfit.log
+      archivedLogFilenamePattern: ./logs/flipfit-%d.log.gz
+      archivedFileCount: 5
+      timeZone: UTC
+
+# Application specific configuration
+appName: FlipFit
+version: 1.0.0
