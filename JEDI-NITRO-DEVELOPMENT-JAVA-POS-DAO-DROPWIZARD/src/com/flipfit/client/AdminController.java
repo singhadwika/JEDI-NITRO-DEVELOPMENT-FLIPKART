@@ -8,6 +8,7 @@ import com.flipfit.business.AdminService;
 import com.flipfit.business.AdminServiceImpl;
 import com.flipfit.dto.ApiResponse;
 import com.flipfit.dto.DeclineRequest;
+import com.flipfit.dto.RegisterRequest;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -64,14 +65,19 @@ public class AdminController {
     /**
      * Registers a new admin in the system.
      *
-     * @param admin the admin to register
+     * @param registerRequest the registration request
      * @return the response indicating registration status
      */
     @POST
     @Path("/register")
-    public Response registerAdmin(Admin admin) {
+    public Response registerAdmin(RegisterRequest registerRequest) {
         try {
+            Admin admin = new Admin();
+            admin.setName(registerRequest.getName());
+            admin.setEmail(registerRequest.getEmail());
+            admin.setPassword(registerRequest.getPassword());
             admin.setRole("ADMIN");
+            
             boolean success = adminService.registerAdmin(admin);
             if (success) {
                 return Response.status(Response.Status.CREATED)

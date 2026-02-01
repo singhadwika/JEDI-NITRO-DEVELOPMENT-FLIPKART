@@ -9,6 +9,7 @@ import com.flipfit.business.GymOwnerServiceImpl;
 import com.flipfit.dto.ApiResponse;
 import com.flipfit.dto.AddSlotRequest;
 import com.flipfit.dto.UpdateCenterRequest;
+import com.flipfit.dto.RegisterRequest;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -40,14 +41,19 @@ public class GymOwnerController {
     /**
      * Registers a new gym owner.
      *
-     * @param gymOwner the gym owner to register
+     * @param registerRequest the registration request
      * @return the response indicating registration status
      */
     @POST
     @Path("/register")
-    public Response registerGymOwner(GymOwner gymOwner) {
+    public Response registerGymOwner(RegisterRequest registerRequest) {
         try {
+            GymOwner gymOwner = new GymOwner();
+            gymOwner.setName(registerRequest.getName());
+            gymOwner.setEmail(registerRequest.getEmail());
+            gymOwner.setPassword(registerRequest.getPassword());
             gymOwner.setRole("GYM_OWNER");
+            
             boolean success = ownerService.registerGymOwner(gymOwner);
             if (success) {
                 return Response.status(Response.Status.CREATED)

@@ -65,13 +65,6 @@
             <artifactId>jackson-datatype-jsr310</artifactId>
         </dependency>
 
-        <!-- Swagger/OpenAPI -->
-        <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-jaxrs2-jakarta</artifactId>
-            <version>2.2.8</version>
-        </dependency>
-
         <!-- Testing -->
         <dependency>
             <groupId>io.dropwizard</groupId>
