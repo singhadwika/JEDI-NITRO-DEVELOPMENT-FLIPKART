@@ -2,6 +2,7 @@
 
 # Server Configuration
 server:
+  rootPath: /
   applicationConnectors:
     - type: http
       port: 8080
@@ -17,7 +18,7 @@ database:
   driverClass: com.mysql.cj.jdbc.Driver
   url: jdbc:mysql://localhost:3306/flipfit
   user: root
-  password: root
+  password: 30062004
   maxWaitForConnection: 1s
   validationQuery: "SELECT 1"
   validationQueryTimeout: 3s

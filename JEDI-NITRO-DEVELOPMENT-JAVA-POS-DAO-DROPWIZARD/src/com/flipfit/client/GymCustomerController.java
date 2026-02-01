@@ -8,6 +8,7 @@ import com.flipfit.business.GymCustomerService;
 import com.flipfit.business.GymCustomerServiceImpl;
 import com.flipfit.dto.ApiResponse;
 import com.flipfit.dto.BookSlotRequest;
+import com.flipfit.dto.RegisterRequest;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -39,14 +40,19 @@ public class GymCustomerController {
     /**
      * Registers a new gym customer.
      *
-     * @param customer the customer to register
+     * @param registerRequest the registration request
      * @return the response indicating registration status
      */
     @POST
     @Path("/register")
-    public Response registerCustomer(GymCustomer customer) {
+    public Response registerCustomer(RegisterRequest registerRequest) {
         try {
+            GymCustomer customer = new GymCustomer();
+            customer.setName(registerRequest.getName());
+            customer.setEmail(registerRequest.getEmail());
+            customer.setPassword(registerRequest.getPassword());
             customer.setRole("GYM_CUSTOMER");
+            
             boolean success = customerService.registerCustomer(customer);
             if (success) {
                 return Response.status(Response.Status.CREATED)
